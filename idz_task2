@@ -1,0 +1,39 @@
+#include <stdio.h>
+#include <string.h>
+
+int main()
+{
+    //Declaring variables
+    int cnt;
+    char smb, codeS[80], encodeS[80], strS[80];
+    char *code = &codeS;
+    char *encode = &encodeS;
+    char *str = &strS;
+    //Input initial data
+    printf("Input initial string to encode:\n");
+    scanf("%s", code);
+
+    //Encoding
+    strcpy(encode, "");
+    smb = code[0];
+    cnt = 0;
+    
+    for (int i = 0; i <= strlen(code); i++) {
+        if (code[i]==smb) {
+            cnt++;
+        }
+        else {
+            sprintf(str, "%d", cnt);
+            strcat(encode, str);
+            sprintf(str, "%c", smb);
+            strcat(encode, str);
+            smb = code[i];
+            cnt = 1;
+        }
+    }
+    //Output encoded string
+    printf("And here's your encoded string:\n");
+    printf("%s\n", encode);
+
+    return 0;
+}
